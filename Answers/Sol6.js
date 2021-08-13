@@ -1,5 +1,8 @@
 // you can write to stdout for debugging purposes, e.g.
 // console.log('this is a debug message');
+
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
 let bordes = (P,N) =>{
     return {
         izquierdo : P - 1,
@@ -13,7 +16,7 @@ let tapeEq = (arr) => {
     let idx2 = 0
     let valor = 0
     let sum = 0
-    let auxArr = []
+    let min = 10000
     for(idx; idx < N; idx++){
         let lim = bordes(idx,N)
         valor = 0
@@ -27,14 +30,16 @@ let tapeEq = (arr) => {
           valor = valor + arr[idx2]
         }
         sum = sum - valor
-        auxArr.push(Math.abs(sum))
+        sum = Math.abs(sum)
+        if(sum < min)
+            min = sum
     }  
-    return auxArr
+    return min
 }
 
 
 function solution(A) {
     // write your code in JavaScript (Node.js 8.9.4)
     let solArr = tapeEq(A)    
-    return Math.min(...solArr)
+    return solArr//Math.min(...solArr)
 }
